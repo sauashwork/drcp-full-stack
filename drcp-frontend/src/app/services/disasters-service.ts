@@ -7,10 +7,10 @@ import { Observable } from 'rxjs';
 })
 export class DisastersService {
   
-  API_URL:string="";
+  API_URL:string="http://localhost:8080/disasters";
 
   constructor(private http : HttpClient){
-    this.API_URL="http://localhost:8080/disasters";
+
   }
 
   getAllDisasters() : Observable<any>{

@@ -7,10 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ReportsService {
   
-  API_URL : string="";
+  API_URL:string="http://localhost:8080/reports";
 
   constructor(private http: HttpClient){
-    this.API_URL="http://localhost:8080/reports";
   }
 
   createNewReport(report : any) : Observable<any>{

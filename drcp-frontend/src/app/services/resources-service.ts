@@ -7,10 +7,9 @@ import { Observable } from 'rxjs';
 })
 export class ResourcesService {
   
-  API_URL:string="";
+  API_URL:string="http://localhost:8080/resources";
 
   constructor(private http : HttpClient){
-    this.API_URL="http://localhost:8080/resources";
   }
 
   getAllResources() : Observable<any>{
