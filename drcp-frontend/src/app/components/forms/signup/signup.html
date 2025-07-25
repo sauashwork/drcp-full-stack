@@ -1,0 +1,137 @@
+<div class="signup-form">
+  <form [formGroup]="signupForm" class="signup-form">
+    <div class="form-details">
+      <mat-icon class="close-icon" (click)="onClickClose()">close</mat-icon>
+      <h2>Signup Form</h2>
+      <div class="inputs">
+        <div class="form-group">
+          <label><mat-icon>account_box</mat-icon></label>
+          <input
+            type="text"
+            class="form-control"
+            placeholder="Enter your username"
+            formControlName="username"
+          />
+          <ng-container
+            *ngIf="
+              signupForm.get('username')?.touched ||
+              signupForm.get('username')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('username')?.errors?.['required']"
+            >
+              Username is required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('username')?.errors?.['pattern']"
+            >
+              Only alphabets are allowed
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('username')?.errors?.['minlength']"
+            >
+              Minimum 5 characters required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('username')?.errors?.['maxlength']"
+            >
+              Maximum 10 characters allowed
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label><mat-icon>mail</mat-icon></label>
+          <input
+            type="email"
+            class="form-control"
+            placeholder="Enter your email id"
+            formControlName="email"
+          />
+          <ng-container
+            *ngIf="
+              signupForm.get('email')?.touched || signupForm.get('email')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('email')?.errors?.['required']"
+            >
+              Email is required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('email')?.errors?.['email']"
+            >
+              Invalid email format
+            </small>
+          </ng-container>
+        </div>
+        <div class="form-group">
+          <label><mat-icon>password</mat-icon></label>
+          <input
+            type="password"
+            class="form-control"
+            placeholder="Enter your password"
+            formControlName="password"
+          />
+          <ng-container
+            *ngIf="
+              signupForm.get('password')?.touched ||
+              signupForm.get('password')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('password')?.errors?.['required']"
+            >
+              Password is required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('password')?.errors?.['minlength']"
+            >
+              Minimum 6 characters required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('password')?.errors?.['maxlength']"
+            >
+              Maximum 12 characters allowed
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="signupForm.get('password')?.errors?.['pattern']"
+            >
+              Must include uppercase, lowercase, number, and special character
+            </small>
+          </ng-container>
+        </div>
+        <div>
+          <label style="color: orangered">Role</label>
+          <select class="form-control" formControlName="role">
+            <option *ngFor="let role of roles" [value]="role">
+              {{ role }}
+            </option>
+          </select>
+          @if(signupForm.get('role')?.dirty || signupForm.get('role')?.touched){
+          @if(signupForm.get('role')?.errors?.['required']){
+          <small class="text-danger">Role is required</small>
+          } }
+        </div>
+      </div>
+      <button
+        type="submit"
+        [disabled]="!signupForm.valid"
+        (click)="OnSubmitSignUpForm()"
+      >
+        Sign up
+      </button>
+      <p>Already Signed? <a class="refs" (click)="onClickLogin()">Login</a></p>
+    </div>
+  </form>
+</div>

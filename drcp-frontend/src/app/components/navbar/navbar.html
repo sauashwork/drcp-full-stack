@@ -1,0 +1,23 @@
+<div class="navbar">
+  <ul>
+    @for(item of navItems; track item){
+    <li>
+      <a [routerLink]="item.routerLink" routerLinkActive="active">
+        @if(item.name==="Home"){
+        <mat-icon>home</mat-icon>
+        } @else {
+        {{ item.name }}
+        }
+      </a>
+    </li>
+    }
+    <li>
+      <button (click)="onLogout()" class="auth-link">Logout</button>
+    </li>
+    <li>
+      <mat-icon (click)="onClickThemeToggle()">
+        {{ isDarkMode ? "brightness_7" : "brightness_4" }}
+      </mat-icon>
+    </li>
+  </ul>
+</div>

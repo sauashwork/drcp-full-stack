@@ -1,0 +1,33 @@
+.footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: rgb(233, 233, 233);
+    // position: sticky;
+    // bottom: 0px;
+    // z-index: 1000;
+    ul {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 20px;
+        padding: 10px;
+        li {
+            list-style: none;
+
+            a {
+                text-decoration: none;
+                color: black;
+
+                &:hover{
+                    color: rgb(255, 125, 78);
+                }
+            }
+
+        }
+    }
+}
+
+.active{
+    font-weight: bold;
+}

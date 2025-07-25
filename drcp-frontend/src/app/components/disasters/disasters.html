@@ -1,0 +1,501 @@
+<div class="disasters">
+  <h1>Manage <span>Disasters</span></h1>
+  <!-- <div class="top">
+    <img [src]="bgImg" alt="disaster" />
+    <p>
+    </p>
+  </div> -->
+
+  @if(roleLoaded){ @if(hasAdminOrVolunteerRole){
+  <p style="color: red">
+    {{ loggedUserRole }} Role : performs all Create, Read, Update, and Delete
+    operations
+  </p>
+  } @else {
+  <p style="color: red">
+    {{ loggedUserRole }} Role : performs only Read operation
+  </p>
+  }
+  <div class="operations">
+    @if(hasAdminOrVolunteerRole){
+    <button (click)="onClickCreate()">Create new Disaster</button>
+    <button (click)="onClickView()">View Disasters</button>
+    <button (click)="onClickUpdate()">Update Disaster</button>
+    <button (click)="onClickDelete()">Delete Disaster</button>
+    } @else {
+    <button (click)="onClickView()">View Disasters</button>
+    }
+
+    <button (click)="onClickFindResources()">Find Resources</button>
+    <!-- <button>Find Reports</button>
+      <button>Verify Image</button> -->
+    <button (click)="onClickWayToResource()">Way to Resource</button>
+  </div>
+  } @else { }
+</div>
+
+<div class="create-disaster-form" *ngIf="openCreteDisasterForm">
+  <form [formGroup]="disasterForm">
+    <mat-icon (click)="onClickCloseCreate()" class="close-icon">close</mat-icon>
+    <div class="create-disaster-form-details">
+      <h1>Create new <span style="color: orangered">Disaster</span></h1>
+      <div class="inputs">
+        <div>
+          <label for="title">Title</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="title"
+            placeholder="Enter title "
+          />
+          <ng-container
+            *ngIf="
+              disasterForm.get('title')?.dirty ||
+              disasterForm.get('title')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="disasterForm.get('title')?.errors?.['required']"
+            >
+              Title is required
+            </small>
+          </ng-container>
+        </div>
+        <div>
+          <label for="description">Description</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="description"
+            placeholder="Enter description "
+          />
+          <ng-container
+            *ngIf="
+              disasterForm.get('description')?.dirty ||
+              disasterForm.get('description')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="disasterForm.get('description')?.errors?.['required']"
+            >
+              Description is required
+            </small>
+          </ng-container>
+        </div>
+        <div>
+          <label for="location">Location</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="locationName"
+            placeholder="Enter location "
+          />
+          <ng-container
+            *ngIf="
+              disasterForm.get('locationName')?.dirty ||
+              disasterForm.get('locationName')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="disasterForm.get('locationName')?.errors?.['required']"
+            >
+              Location is required
+            </small>
+          </ng-container>
+        </div>
+        <div>
+          <label for="tags">Tags</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="tags"
+            placeholder="Enter tags comma seperated"
+          />
+          <ng-container
+            *ngIf="
+              disasterForm.get('tags')?.dirty ||
+              disasterForm.get('tags')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="disasterForm.get('tags')?.errors?.['required']"
+            >
+              Tags is required
+            </small>
+          </ng-container>
+        </div>
+      </div>
+      <button [disabled]="!disasterForm.valid" (click)="onSubmitCreate()">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="view-disasters" *ngIf="viewDisastersTable">
+  <h1><span style="color: orangered">Disasters</span> Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>Titlte</th>
+        <th>Location</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>Description</th>
+        <th>Tags</th>
+        <th>Owner Id</th>
+        <th>Created At</th>
+        <th>Audit Trails</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of disastersList; track item) {
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.title }}</td>
+        <td>{{ item.locationName }}</td>
+        <td>{{ item.latitude }}</td>
+        <td>{{ item.longitude }}</td>
+        <td>{{ item.description }}</td>
+        <td>{{ item.tags }}</td>
+        <td>{{ item.ownerId }}</td>
+        <td>{{ item.createdAt }}</td>
+        <td>{{ item.auditTrail }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="update-disaster-form" *ngIf="openUpdateDisasterForm">
+  <form [formGroup]="updateDisasterForm">
+    <mat-icon (click)="onClickCloseCreate()" class="close-icon">close</mat-icon>
+    <div class="update-disaster-form-details">
+      <h1>Update <span style="color: orangered">Disaster</span> Details</h1>
+      <div class="inputs">
+        <div>
+          <div class="fetch-disaster-by-id">
+            <div>
+              <label for="id">ID</label>
+              <input
+                type="text"
+                class="form-control"
+                formControlName="id"
+                placeholder="Enter ID "
+              />
+            </div>
+            <button (click)="onClickFetchDisaster()">Fetch Disaster</button>
+          </div>
+          <ng-container
+            *ngIf="
+              updateDisasterForm.get('id')?.dirty ||
+              updateDisasterForm.get('id')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="updateDisasterForm.get('id')?.errors?.['required']"
+            >
+              ID is required
+            </small>
+          </ng-container>
+        </div>
+        <div *ngIf="fillDetails" class="inputs2">
+          <div>
+            <label for="title">Title</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="title"
+              placeholder="Enter title "
+            />
+            <ng-container
+              *ngIf="
+                updateDisasterForm.get('title')?.dirty ||
+                updateDisasterForm.get('title')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="updateDisasterForm.get('title')?.errors?.['required']"
+              >
+                Title is required
+              </small>
+            </ng-container>
+          </div>
+          <div>
+            <label for="description">Description</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="description"
+              placeholder="Enter description "
+            />
+            <ng-container
+              *ngIf="
+                updateDisasterForm.get('description')?.dirty ||
+                updateDisasterForm.get('description')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="updateDisasterForm.get('description')?.errors?.['required']"
+              >
+                Description is required
+              </small>
+            </ng-container>
+          </div>
+          <div>
+            <label for="location">Location</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="locationName"
+              placeholder="Enter location "
+            />
+            <ng-container
+              *ngIf="
+                updateDisasterForm.get('locationName')?.dirty ||
+                updateDisasterForm.get('locationName')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="updateDisasterForm.get('locationName')?.errors?.['required']"
+              >
+                Location is required
+              </small>
+            </ng-container>
+          </div>
+          <div>
+            <label for="tags">Tags</label>
+            <input
+              type="text"
+              class="form-control"
+              formControlName="tags"
+              placeholder="Enter tags comma seperated"
+            />
+            <ng-container
+              *ngIf="
+                updateDisasterForm.get('tags')?.dirty ||
+                updateDisasterForm.get('tags')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="updateDisasterForm.get('tags')?.errors?.['required']"
+              >
+                Tags is required
+              </small>
+            </ng-container>
+          </div>
+        </div>
+        <button
+          [disabled]="!updateDisasterForm.valid"
+          (click)="onSubmitUpdate()"
+        >
+          Update
+        </button>
+      </div>
+    </div>
+  </form>
+</div>
+
+<div class="delete-disaster-form" *ngIf="openDeleteDisasterForm">
+  <form [formGroup]="deleteDisasterForm">
+    <mat-icon (click)="onClickCloseCreate()" class="close-icon">close</mat-icon>
+    <div class="delete-disaster-form-details">
+      <h1>Delete <span style="color: orangered">Disaster</span> Details</h1>
+      <div class="inputs">
+        <div>
+          <label for="id">ID</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="id"
+            placeholder="Enter ID "
+          />
+        </div>
+        <ng-container
+          *ngIf="
+            deleteDisasterForm.get('id')?.dirty ||
+            deleteDisasterForm.get('id')?.touched
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="deleteDisasterForm.get('id')?.errors?.['required']"
+          >
+            ID is required
+          </small>
+        </ng-container>
+      </div>
+      <button [disabled]="!deleteDisasterForm.valid" (click)="onSubmitDelete()">
+        Delete
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="find-resources-form" *ngIf="openFindResourcesForm">
+  <form [formGroup]="findResourcesForm">
+    <mat-icon (click)="onClickCloseCreate()" class="close-icon">close</mat-icon>
+    <div class="find-resources-form-details">
+      <h1>Find <span style="color: orangered">Resources</span> Details</h1>
+      <div class="inputs">
+        <div>
+          <label for="disasterId">Disaster ID</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="disasterId"
+            placeholder="Enter Disaster ID "
+          />
+        </div>
+        <ng-container
+          *ngIf="
+            findResourcesForm.get('disasterId')?.dirty ||
+            findResourcesForm.get('disasterId')?.touched
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="findResourcesForm.get('disasterId')?.errors?.['required']"
+          >
+            Disaster ID is required
+          </small>
+        </ng-container>
+      </div>
+      <button
+        [disabled]="!findResourcesForm.valid"
+        (click)="onSubmitFindResources()"
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="view-resources" *ngIf="viewResourcesTable">
+  <h1><span style="color: orangered">Resources</span> Data</h1>
+  <table>
+    <thead>
+      <tr>
+        <th>Id</th>
+        <th>disaster Id</th>
+        <th>name</th>
+        <th>location</th>
+        <th>Latitude</th>
+        <th>Longitude</th>
+        <th>type</th>
+        <th>Owner Id</th>
+        <th>Audit Trail</th>
+      </tr>
+    </thead>
+    <tbody>
+      @for (item of resourcesList; track item) {
+      <tr>
+        <td>{{ item.id }}</td>
+        <td>{{ item.disasterId }}</td>
+        <td>{{ item.name }}</td>
+        <td>{{ item.locationName }}</td>
+        <td>{{ item.latitude }}</td>
+        <td>{{ item.longitude }}</td>
+        <td>{{ item.type }}</td>
+        <td>{{ item.ownerId }}</td>
+        <td>{{ item.auditTrail }}</td>
+      </tr>
+      }
+    </tbody>
+  </table>
+</div>
+
+<div class="way-to-resource-form" *ngIf="openWayToResourceForm">
+  <form [formGroup]="wayToResourceForm">
+    <mat-icon (click)="onClickCloseCreate()" class="close-icon">close</mat-icon>
+    <div class="way-to-resource-form-details">
+      <h1>
+        Map from<span style="color: orangered"> Disaster to Resource</span>
+      </h1>
+      <div class="inputs">
+        <div>
+          <label for="disasterId">Disaster ID</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="disasterId"
+            placeholder="Enter Disaster ID "
+          />
+          <ng-container
+            *ngIf="
+              wayToResourceForm.get('disasterId')?.dirty ||
+              wayToResourceForm.get('disasterId')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="wayToResourceForm.get('disasterId')?.errors?.['required']"
+            >
+              Disaster ID is required
+            </small>
+          </ng-container>
+        </div>
+        <div>
+          <label for="resourceId">Resource ID</label>
+          <input
+            type="text"
+            class="form-control"
+            formControlName="resourceId"
+            placeholder="Enter Resource ID "
+          />
+          <ng-container
+            *ngIf="
+              wayToResourceForm.get('resourceId')?.dirty ||
+              wayToResourceForm.get('resourceId')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="wayToResourceForm.get('resourceId')?.errors?.['required']"
+            >
+              Resource ID is required
+            </small>
+          </ng-container>
+        </div>
+      </div>
+      <button
+        [disabled]="!wayToResourceForm.valid"
+        (click)="onSubmitWayToResource()"
+      >
+        Find Path
+      </button>
+    </div>
+  </form>
+</div>
+
+<div class="view-map" *ngIf="showMap">
+  <h2 style="text-align:center; color: orangered; margin-bottom: 10px;">
+    Disaster to Resource Route
+  </h2>
+  <div class="coordinates-info">
+    <div class="left">
+      <span >Source (Disaster)</span>
+      <button>Lat: {{ startingPointCoordinates[0] }}</button>
+      <button>Long: {{ startingPointCoordinates[1] }}</button>
+    </div>
+    <div style="color: orangered">
+      <span style="color: blue">----------------------------</span><mat-icon>location_on</mat-icon><span style="color: orangered">----------------------------</span>
+    </div>
+    <div class="right">
+      <span >Destination (Resource)</span>
+      <button>Lat: {{ destinationPointCoordinates[0] }}</button>
+      <button>Long: {{ destinationPointCoordinates[1] }}</button>
+    </div>
+  </div>
+  <div id="map"></div>
+</div>

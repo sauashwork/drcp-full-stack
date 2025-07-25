@@ -1,0 +1,74 @@
+.home {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  overflow: hidden;
+  gap: 20px;
+
+  .top {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+
+    .blink-text {
+      color: orangered !important;
+      animation: blink 2s ease-in-out 2s infinite normal forwards !important;
+    }
+
+    @keyframes blink {
+      0% {
+        opacity: 1;
+      }
+
+      50% {
+        opacity: 0.2;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+  }
+
+  .cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+
+    .card {
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+      flex-wrap: wrap;
+      border: 2px solid rgb(233, 233, 233);
+      padding: 20px;
+
+      img {
+        width: 320px;
+        object-fit: contain;
+      }
+
+      .card-item {
+        button {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          background-color: orangered;
+          border: none;
+          padding: 15px;
+          color: white;
+          cursor: pointer;
+
+          &:hover {
+            background-color: rgba(255, 68, 0, 0.859);
+          }
+        }
+
+        p {
+          font-size: 12px;
+        }
+      }
+    }
+  }
+}

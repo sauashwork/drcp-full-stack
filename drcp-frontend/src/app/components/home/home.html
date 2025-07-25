@@ -1,0 +1,24 @@
+<div class="home">
+  <div class="top">
+    <h1>
+      Welcome <span style="color: orangered">{{ username }}</span>
+    </h1>
+    <p>
+      Login expires at <span class="blink-text">{{ expireTime }}</span>
+    </p>
+  </div>
+  <div class="cards">
+    @for(item of homeItems; track item){
+      <div class="card">
+        <img [src]="item.img" [alt]="item.heading" />
+        <div class="card-item">
+          <button (click)="handleOnClickItem(item)">
+            <mat-icon>link</mat-icon>
+            {{ item.heading }}
+          </button>
+          <p>{{ item.description }}</p>
+        </div>
+      </div>
+    }
+  </div>
+</div>

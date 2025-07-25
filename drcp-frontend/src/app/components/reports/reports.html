@@ -1,0 +1,145 @@
+<div class="create-report">
+  <h2 (click)="onClickCreateReport()" class="open-close-create-report-form">
+    Create <span>new Report <mat-icon>arrow_drop_down</mat-icon> </span>
+  </h2>
+  <form
+    class="create-report-form"
+    [formGroup]="reportform"
+    *ngIf="openReportForm"
+  >
+    <div class="create-report-form-details">
+      <div class="inputs">
+        <div>
+          <div class="input">
+            <label>Type</label>
+            <input
+              type="text"
+              formControlName="type"
+              placeholder="Disaster/Resource"
+            />
+            <ng-container
+              *ngIf="
+                reportform.get('type')?.dirty || reportform.get('type')?.touched
+              "
+            >
+              <small
+                class="text-danger"
+                *ngIf="reportform.get('type')?.errors?.['required']"
+              >
+                Type is required
+              </small>
+            </ng-container>
+          </div>
+        </div>
+        <div>
+          <div class="input">
+            <label>Type ID</label>
+            <input
+              type="text"
+              formControlName="typeId"
+              placeholder="Disaster ID/Resource ID"
+            />
+          </div>
+          <ng-container
+            *ngIf="
+              reportform.get('typeId')?.dirty ||
+              reportform.get('typeId')?.touched
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="reportform.get('typeId')?.errors?.['required']"
+            >
+              Type ID is required
+            </small>
+          </ng-container>
+        </div>
+      </div>
+      <div class="images">
+        <label>Upload Images</label>
+        <div class="upload-grid">
+          <div *ngFor="let i of [0, 1]; let idx = index">
+            <div class="top">
+              <input
+                type="file"
+                id="fileInput{{ idx }}"
+                (change)="onFileSelected($event, idx)"
+                style="display: none"
+                accept="image/*"
+              />
+              <label class="custom-file-label" for="fileInput{{ idx }}">
+                Choose File
+              </label>
+              <span class="file-name">{{
+                selectedFiles[idx].name || "No file chosen"
+              }}</span>
+              <mat-icon
+                class="preview-icon"
+                *ngIf="selectedFiles[idx]"
+                (click)="previewImage(idx)"
+                style="cursor: pointer"
+                >preview</mat-icon
+              >
+            </div>
+            <img
+              *ngIf="previewIdx === idx && previewUrl"
+              [src]="previewUrl"
+              class="preview-img"
+              alt="Preview"
+            />
+          </div>
+        </div>
+      </div>
+      <div class="text-area">
+        <textarea
+          formControlName="content"
+          placeholder="write report..."
+        ></textarea>
+        <ng-container
+          *ngIf="
+            reportform.get('content')?.dirty ||
+            reportform.get('content')?.touched
+          "
+        >
+          <small
+            class="text-danger"
+            *ngIf="reportform.get('content')?.errors?.['required']"
+          >
+            Content is required
+          </small>
+        </ng-container>
+      </div>
+      <button (click)="onSubmitCreateReport()" [disabled]="!reportform.valid">
+        Report
+      </button>
+    </div>
+  </form>
+</div>
+
+<hr />
+
+<div class="reports">
+  <h2>Users says...</h2>
+  <div class="cards" *ngFor="let item of reportsList">
+    <!-- @for(item of reportsList; track item){ -->
+    <div class="card">
+      <div class="top">
+        <div class="top-left">{{ item.id }}</div>
+        <div class="top-right">
+          <!-- images here -->
+          @for(img of item.images.split(','); track img) {
+          <img [src]="img.trim()" alt="Report Image" class="report-img" />
+          }
+        </div>
+      </div>
+      <div class="bottom">
+        <h3>Report by - {{ item.ownerId }}</h3>
+        <p>{{ item.type }} - {{ item.typeId }}</p>
+        <p>{{ item.auditTrail }}</p>
+        <small> {{ item.content }} </small>
+        <button>{{ item.verificationStatus }}</button>
+      </div>
+    </div>
+    <!-- } -->
+  </div>
+</div>

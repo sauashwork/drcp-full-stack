@@ -1,0 +1,221 @@
+.create-report {
+
+
+    h2 {
+        display: inline-block;
+        text-align: center;
+        cursor: pointer;
+        // border: 2px solid rgb(233, 233, 233);
+        color: orangered;
+
+        &:hover {
+            color: rgba(255, 68, 0, 0.587);
+        }
+    }
+
+    .create-report-form-details {
+        border: 2px solid rgb(233, 233, 233);
+
+        display: flex;
+        flex-direction: column;
+        gap: 30px;
+        padding: 20px;
+
+        .inputs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                .input {
+                    label {
+                        color: orangered;
+                    }
+
+                    input {
+                        padding: 10px;
+                        outline: none;
+                    }
+                }
+
+                small {
+                    grid: 1;
+                }
+            }
+        }
+
+        .images {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+
+            label {
+                color: orangered;
+            }
+
+            .upload-grid {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 20px;
+
+                .top {
+                    border: 2px solid rgb(233, 233, 233);
+                    display: flex;
+                    align-items: center;
+                    gap: 10px;
+
+                    .custom-file-label {
+                        display: flex;
+                        align-items: center;
+                        gap: 5px;
+                        cursor: pointer;
+                        background: #f5f5f5;
+                        margin-right: 8px;
+                        padding: 10px;
+                    }
+
+                    .file-name {
+                        margin-right: 8px;
+                        font-size: 0.95em;
+                        color: #555;
+                    }
+
+                    .preview-icon {
+                        margin-right: 8px;
+                    }
+                }
+
+                .preview-img {
+                    margin: 8px;
+                    max-width: 120px;
+                    max-height: 120px;
+                    border: 1px solid rgb(233, 233, 233);
+                }
+
+            }
+        }
+
+        .text-area {
+            display: flex;
+            flex-direction: column;
+            height: 200px;
+
+            textarea {
+                flex: 1;
+                border: 2px solid rgb(233, 233, 233);
+                outline: none;
+                padding: 5px;
+            }
+        }
+
+        button {
+            background-color: orangered;
+            color: white;
+            padding: 10px;
+            cursor: pointer;
+            border: none;
+
+            &:hover {
+                background-color: rgba(255, 68, 0, 0.543);
+            }
+        }
+
+
+    }
+}
+
+
+
+.reports {
+
+    // border: 2px solid red;
+    h2 {
+        text-align: center;
+        // border: 2px solid red;
+        padding: 10px;
+        color: orangered;
+    }
+
+    .cards {
+        // border: 2px solid red;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 20px;
+
+        .card {
+            // border: 2px solid red;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            background-color: rgb(233, 233, 233);
+
+            .top {
+                // border: 2px solid red;
+                display: flex;
+                gap: 10px;
+
+                .top-left {
+                    // border: 2px solid red;
+                    padding: 10px;
+                    background-color: black;
+                    color: white;
+                }
+
+                .top-right {
+                    border: 2px solid rgb(221, 221, 221);
+                    padding: 10px;
+                    flex: 1;
+                    display: flex;
+                    gap: 10px;
+                    flex-wrap: wrap;
+                    overflow: hidden;
+                    align-items: flex-start;
+                    justify-content: space-around;
+                    .report-img {
+                        width: 40px;
+                        height: 40px;
+                        object-fit: cover;
+                        border: 2px solid black;
+                        padding: 2px;
+                    }
+                }
+            }
+
+            .bottom {
+                flex: 1;
+                border: 2px solid rgb(221, 221, 221);
+                display: flex;
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 10px;
+                background-color: white;
+
+                h3 {
+                    margin: 0px;
+                    font-size: 14px;
+                }
+
+                p {
+                    margin: 0px;
+                    color: rgba(0, 0, 0, 0.541);
+                    font-size: 10px;
+                }
+
+                small {
+                    margin-top: 10px;
+                }
+
+                button {
+                    background-color: orangered;
+                    padding: 5px;
+                    border: none;
+                    margin-top: 10px;
+                    color: white;
+                }
+            }
+        }
+    }
+}

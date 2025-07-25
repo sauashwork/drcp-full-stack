@@ -1,0 +1,481 @@
+.resources {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    flex-wrap: wrap;
+
+    h1 {
+        text-align: center;
+
+        span {
+            color: orangered !important;
+        }
+    }
+
+    .top {
+        display: flex;
+        flex-direction: column;
+        overflow: hidden;
+        flex-wrap: wrap;
+        padding: 20px;
+
+        img {
+            object-fit: contain;
+            width: 100%;
+        }
+
+        p {
+            display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
+            white-space: normal;
+            word-break: break-word;
+            line-height: 20px;
+        }
+    }
+
+    .operations {
+        padding: 10px;
+        display: flex;
+        margin-bottom: 20px !important;
+        gap: 52px;
+        flex-wrap: wrap;
+        overflow: hidden;
+
+        button {
+            padding: 15px;
+            background-color: orangered;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 0, 0, 0.519);
+            }
+        }
+    }
+
+
+}
+
+.create-resource-form {
+    position: relative;
+    margin: 50px;
+    border: 2px solid orangered;
+
+    .close-icon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: orangered;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 68, 0, 0.603);
+        }
+    }
+
+    .create-resource-form-details {
+
+        h1 {
+            text-align: center;
+            // color: white;
+        }
+
+        padding: 30px;
+
+        .inputs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    color: orangered;
+                }
+
+                input {
+                    padding: 10px;
+                    outline: none;
+                }
+            }
+
+
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: orangered;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 68, 0, 0.552);
+            }
+        }
+    }
+}
+
+.view-resources {
+    padding: 4rem;
+    color: #ffffff;
+    overflow-x: auto;
+
+    h1 {
+        margin-bottom: 1.5rem;
+        font-size: 2rem;
+        color: black;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        background-color: #1e1e1e;
+        overflow: hidden;
+
+        th,
+        td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid #2c2c2c;
+            font-size: 0.95rem;
+        }
+
+        th {
+            background-color: #252525;
+            color: orangered;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.05rem;
+        }
+
+        td {
+            color: #dddddd;
+            word-break: break-word;
+        }
+
+        tbody {
+            tr {
+                &:hover {
+                    background-color: #2c2c2c;
+                    transition: background-color 0.2s ease-in-out;
+                }
+            }
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem 0.5rem;
+
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        table {
+
+            th,
+            td {
+                padding: 0.5rem;
+                font-size: 0.55rem;
+            }
+        }
+    }
+}
+
+.update-resource-form {
+    position: relative;
+    margin: 50px;
+    border: 2px solid orangered;
+
+    .close-icon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: orangered;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 68, 0, 0.603);
+        }
+    }
+
+    .update-resource-form-details {
+        h1 {
+            text-align: center;
+        }
+
+        padding: 30px;
+
+        .inputs {
+
+            .fetch-resource-by-id {
+                display: flex;
+                gap: 20px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        color: orangered;
+                    }
+
+                    input {
+                        padding: 10px;
+                        outline: none;
+                    }
+                }
+
+                button {
+                    padding: 10px 20px;
+                    margin-top: 20px;
+                    background-color: orangered;
+                    color: white;
+                    border: none;
+                    cursor: pointer;
+
+                    &:hover {
+                        background-color: rgba(255, 68, 0, 0.552);
+                    }
+                }
+            }
+
+            .inputs2 {
+                margin-top: 20px;
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 30px;
+
+                div {
+                    display: flex;
+                    flex-direction: column;
+
+                    label {
+                        color: orangered;
+                    }
+
+                    input {
+                        padding: 10px;
+                        outline: none;
+                    }
+                }
+            }
+
+            button {
+                padding: 10px 20px;
+                margin-top: 20px;
+                background-color: orangered;
+                color: white;
+                border: none;
+                cursor: pointer;
+
+                &:hover {
+                    background-color: rgba(255, 68, 0, 0.552);
+                }
+            }
+
+        }
+
+    }
+}
+
+.delete-resource-form {
+    position: relative;
+    margin: 50px;
+    border: 2px solid orangered;
+
+    .close-icon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: orangered;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 68, 0, 0.603);
+        }
+    }
+
+    .delete-resource-form-details {
+        h1 {
+            text-align: center;
+        }
+
+        padding: 30px;
+
+        .inputs {
+            div {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    color: orangered;
+                }
+
+                input {
+                    padding: 10px;
+                    outline: none;
+                }
+            }
+
+
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: orangered;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 68, 0, 0.552);
+            }
+
+        }
+
+
+    }
+}
+
+.way-to-disaster-form {
+    position: relative;
+    margin: 50px;
+    border: 2px solid orangered;
+
+    .close-icon {
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: orangered;
+        color: white;
+        border: none;
+        cursor: pointer;
+
+        &:hover {
+            background-color: rgba(255, 68, 0, 0.603);
+        }
+    }
+
+    .way-to-disaster-form-details {
+
+        h1 {
+            text-align: center;
+            // color: white;
+        }
+
+        padding: 30px;
+
+        .inputs {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 30px;
+
+            div {
+                display: flex;
+                flex-direction: column;
+
+                label {
+                    color: orangered;
+                }
+
+                input {
+                    padding: 10px;
+                    outline: none;
+                }
+            }
+        }
+
+        button {
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: orangered;
+            color: white;
+            border: none;
+            cursor: pointer;
+
+            &:hover {
+                background-color: rgba(255, 68, 0, 0.552);
+            }
+        }
+    }
+}
+
+#map {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    width: 100%;
+    max-width: 700px;
+    height: 400px;
+    margin: 30px auto;
+}
+
+.coordinates-info {
+    display: flex;
+    // background-color: #2c2c2c;
+    justify-content: space-between;
+    align-items: center;
+
+    .left {
+
+        span {
+            color: orangered;
+        }
+
+        display: flex;
+        flex-direction: column;
+        // background-color: lightblue;
+        gap: 10px;
+        padding: 10px;
+
+        button {
+            background-color: blue;
+            border: none;
+            padding: 10px;
+            color: white;
+        }
+    }
+
+    mat-icon {
+        font-size: 60px;
+        width: 60px;
+        height: 60px;
+        // border: 2px solid red;
+    }
+
+    .right {
+        span {
+            color: blue;
+        }
+
+        display: flex;
+        flex-direction: column;
+        // background-color: orangered;
+        gap: 10px;
+        padding: 10px;
+
+        button {
+            background-color: orangered;
+            border: none;
+            padding: 10px;
+            color: white;
+        }
+    }
+}

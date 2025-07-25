@@ -1,0 +1,10 @@
+<div class="footer">
+    <p>Copyrights &copy; {{currentYear}}</p>
+    <ul>
+        @for(item of footerItems; track item){
+            <li>
+                <a [routerLink]="item.routerLink" routerLinkActive="active">{{item.name}}</a>
+            </li>
+        }
+    </ul>
+</div>

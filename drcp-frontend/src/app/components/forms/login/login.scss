@@ -1,0 +1,84 @@
+.form-details {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    display: flex;
+    overflow: hidden;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 70px;
+    border: 2px solid orangered;
+    .close-icon {
+        border: 1px solid red;
+        position: absolute;
+        top: 0px;
+        right: 0px;
+        background-color: orangered;
+        cursor: pointer;
+        color: white;
+
+        &:hover {
+            background-color: rgba(255, 68, 0, 0.678);
+        }
+    }
+
+    .inputs {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 30px;
+        overflow: hidden;
+        flex-wrap: wrap;
+
+        div {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            justify-content: center;
+            overflow: hidden;
+            flex-wrap: wrap;
+
+            input {
+                padding: 10px 250px 10px 15px;
+                outline: none;
+            }
+
+            input::placeholder {
+                text-align: left;
+            }
+
+        }
+
+        mat-icon {
+            color: orangered;
+        }
+    }
+
+    h2,
+    a {
+        color: orangered;
+    }
+
+    button {
+        padding: 10px 20px;
+        background-color: orangered;
+        color: white;
+        border: none;
+        cursor: pointer;
+        margin-top: 20px;
+
+        &:hover {
+            background-color: rgba(255, 68, 0, 0.678);
+        }
+    }
+
+    a {
+        &:hover {
+            color: rgba(255, 68, 0, 0.678);
+            cursor: pointer;
+        }
+    }
+}

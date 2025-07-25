@@ -1,1 +1,47 @@
 /* You can add global styles to this file, and also import other style files */
+
+//theme
+.dark-theme{
+    background-color: #121212;
+    color: #ffffff;
+
+    .home {
+        p{
+        color: white;
+        }
+        
+    }
+
+
+    .footer p{
+        color: black;
+    }
+
+    button{
+        background-color: orangered !important;
+        &:hover{
+            background-color: rgb(253, 0, 0) !important;
+            color: white !important;
+        }
+    }
+
+    .close-icon{
+        &:hover{
+            background-color: white !important;
+        }
+    }
+
+    .coordinates-info{
+        .left{
+            button{
+                background-color: blue !important;
+            }
+        }
+    }
+
+    .reports{
+        h3, small{
+            color: black;
+        }
+    }
+}

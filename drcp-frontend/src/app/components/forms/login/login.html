@@ -1,0 +1,95 @@
+<div class="login">
+  <form [formGroup]="loginForm" class="login-form">
+    <div class="form-details">
+      <mat-icon class="close-icon" (click)="onClickClose()">close</mat-icon>
+      <h2>Login Form</h2>
+      <div class="inputs">
+        <div>
+          <label><mat-icon>account_circle</mat-icon></label>
+          <input
+            type="text"
+            placeholder="Enter your username"
+            class="form-control"
+            formControlName="username"
+          />
+          <ng-container
+            *ngIf="
+              loginForm.get('username')?.touched ||
+              loginForm.get('username')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('username')?.errors?.['required']"
+            >
+              Username is required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('username')?.errors?.['pattern']"
+            >
+              Only alphabets are allowed
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('username')?.errors?.['minlength']"
+            >
+              Minimum 5 characters required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('username')?.errors?.['maxlength']"
+            >
+              Maximum 10 characters allowed
+            </small>
+          </ng-container>
+        </div>
+        <div>
+          <label><mat-icon>password</mat-icon></label>
+          <input
+            type="password"
+            placeholder="Enter your password"
+            class="form-control"
+            formControlName="password"
+          />
+          <ng-container
+            *ngIf="
+              loginForm.get('password')?.touched ||
+              loginForm.get('password')?.dirty
+            "
+          >
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('password')?.errors?.['required']"
+            >
+              Password is required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('password')?.errors?.['minlength']"
+            >
+              Minimum 6 characters required
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('password')?.errors?.['maxlength']"
+            >
+              Maximum 12 characters allowed
+            </small>
+            <small
+              class="text-danger"
+              *ngIf="loginForm.get('password')?.errors?.['pattern']"
+            >
+              Must include uppercase, lowercase, number, and special character
+            </small>
+          </ng-container>
+        </div>
+      </div>
+      <button (click)="onLoginSubmit()">Login</button>
+      <p>
+        Not Yet Signed? <a (click)="onClickSignup()" class="refs">Signup</a>
+      </p>
+      <a class="refs" (click)="onClickForgetPassword()">Forget Password?</a>
+    </div>
+  </form>
+</div>
