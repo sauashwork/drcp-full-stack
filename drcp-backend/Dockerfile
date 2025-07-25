@@ -1,15 +1,12 @@
-# Start from an OpenJDK image
+# ---- Build Stage ----
+FROM maven:3.9.6-eclipse-temurin-17 as builder
+WORKDIR /app
+COPY . .
+RUN mvn clean package -DskipTests
+
+# ---- Run Stage ----
 FROM openjdk:17-jdk-slim
-
-# Add Maintainer Info
-LABEL maintainer="sau-ash"
-
-# Add the JAR file to the container
-ARG JAR_FILE=target/*.jar
-COPY ${JAR_FILE} app.jar
-
-# Expose port
+WORKDIR /app
+COPY --from=builder /app/target/*.jar app.jar
 EXPOSE 8080
-
-# Run the jar file
-ENTRYPOINT ["java","-jar","/app.jar"]
+ENTRYPOINT ["java", "-jar", "app.jar"]
