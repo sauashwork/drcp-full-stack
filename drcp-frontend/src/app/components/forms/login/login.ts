@@ -17,7 +17,7 @@ import { CommonModule } from '@angular/common';
 export class Login {
 
   loginForm: FormGroup;
-  API_URL: string = "http://localhost:8080";
+  API_URL: string = "https://drcp-backend-d40a.onrender.com";
   passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$/;
 
   constructor(private router: Router,

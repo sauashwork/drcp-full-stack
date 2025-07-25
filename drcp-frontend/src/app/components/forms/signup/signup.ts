@@ -15,7 +15,7 @@ import { AuthService } from '../../../services/auth-service';
 export class Signup {
 
   signupForm: FormGroup;
-  API_URL : string ="http://localhost:8080";
+  API_URL : string ="https://drcp-backend-d40a.onrender.com";
   roles : string[]=["NONE","ADMIN", "USER", "VOLUNTEER"];
   passwordPattern = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{6,12}$/;
 

@@ -17,7 +17,7 @@ export class AuthService {
     }
   }
 
-  API_URL: string = "http://localhost:8080/users";
+  API_URL: string = "https://drcp-backend-d40a.onrender.com/users";
 
   login(username: string, password: string): void {
     this.http.post(`${this.API_URL}/login`, { username, password }).subscribe({
