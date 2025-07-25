@@ -29,13 +29,9 @@ public class Disasters {
 
     private Double longitude;
 
-    @Lob
-    @Column(columnDefinition="CLOB")
     @NotNull
     private String description;
 
-    @Lob
-    @Column(columnDefinition="CLOB")
     @NotNull
     private String tags;
 
@@ -44,7 +40,6 @@ public class Disasters {
     private LocalDateTime createdAt;
 
     private String auditTrail;
-
 
     @Override
     public String toString() {
