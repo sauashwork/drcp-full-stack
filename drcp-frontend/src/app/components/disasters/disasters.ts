@@ -353,16 +353,6 @@ export class Disasters {
             const midLng = (startCoords[1] + destCoords[1]) / 2;
             await this.initMap([midLat, midLng]);
             const leaflet = await import('leaflet');
-            // Remove old markers and polylines
-            // this.map.eachLayer((layer: any) => {
-            //   if (
-            //     layer instanceof leaflet.Marker ||
-            //     layer instanceof leaflet.Circle ||
-            //     layer instanceof leaflet.Polyline
-            //   ) {
-            //     this.map.removeLayer(layer);
-            //   }
-            // });
             const routeCoords = await this.mapService.getRoute(startCoords, destCoords);
             leaflet.polyline(routeCoords, { color: 'blue', weight: 5 }).addTo(this.map);
             leaflet.circle(startCoords, { radius: 500, color: 'green', fillColor: 'green', fillOpacity: 0.5 }).addTo(this.map);
