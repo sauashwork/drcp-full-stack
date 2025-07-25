@@ -3,14 +3,12 @@ package com.drcp.backend.controller;
 import com.drcp.backend.entity.Reports;
 import com.drcp.backend.service.ReportsService;
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 import java.time.LocalDateTime;
-import java.util.List;
 
 
 @RestController
@@ -19,9 +17,6 @@ public class ReportsController {
 
     @Autowired
     private ReportsService reportsService;
-
-    @Autowired
-    private ObjectMapper objectMapper;
 
     @PostMapping
     public ResponseEntity<?> createNewReport(@RequestBody Reports report, Principal principal) throws JsonProcessingException {

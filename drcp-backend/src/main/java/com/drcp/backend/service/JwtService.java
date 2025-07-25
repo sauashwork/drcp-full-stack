@@ -21,8 +21,6 @@ public class JwtService {
 
     private String secretKey="";
 
-    private Date expirationTime;
-
     public Date getExpirationTime(String token) {
         return extractExpiration(token);
     }

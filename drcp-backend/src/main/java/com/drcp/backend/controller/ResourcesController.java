@@ -7,7 +7,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
-import com.drcp.backend.entity.Disasters;
 import com.drcp.backend.entity.Resources;
 import com.drcp.backend.entity.Users;
 import com.drcp.backend.service.UsersService;

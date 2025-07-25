@@ -1,7 +1,6 @@
 package com.drcp.backend.controller;
 
 import com.drcp.backend.entity.Users;
-import com.drcp.backend.repository.UsersRepository;
 import com.drcp.backend.service.JwtService;
 import com.drcp.backend.service.UsersService;
 import org.springframework.beans.factory.annotation.Autowired;
