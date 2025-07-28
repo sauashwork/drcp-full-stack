@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +18,8 @@ export class AuthService {
     }
   }
 
-  API_URL: string = "https://drcp-backend-d40a.onrender.com/users";
+  // API_URL: string = "https://drcp-backend-d40a.onrender.com/users";
+  API_URL = environment.API_URL + "/users";
 
   login(username: string, password: string): void {
     this.http.post(`${this.API_URL}/login`, { username, password }).subscribe({

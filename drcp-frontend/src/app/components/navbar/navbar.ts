@@ -14,8 +14,11 @@ export class Navbar {
 
   navItems: { routerLink: string, name: string }[] = [];
 
-  constructor(private authService: AuthService) { }
+  openNavItems : boolean=true;
+  public screenWidth!: number;
 
+  constructor(private authService: AuthService) { }
+  
   ngOnInit() {
     
     this.navItems = [
@@ -25,6 +28,11 @@ export class Navbar {
       { routerLink: "reports", name: "Reports" },
       { routerLink: "updates", name: "Updates" },
     ];
+
+    this.screenWidth=window.innerWidth;
+    if(this.screenWidth<768){
+      this.openNavItems=false;
+    }
   }
 
   isDarkMode: boolean = false;
@@ -41,5 +49,9 @@ export class Navbar {
 
   onLogout(){
     this.authService.logout();
+  }
+
+  onClickHamburger(){
+    this.openNavItems=!this.openNavItems;
   }
 }

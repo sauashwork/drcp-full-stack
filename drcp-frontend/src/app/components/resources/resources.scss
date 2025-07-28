@@ -14,6 +14,11 @@
         }
     }
 
+    p {
+        text-align: center;
+        padding: 15px;
+    }
+
     .top {
         display: flex;
         flex-direction: column;
@@ -39,6 +44,8 @@
     .operations {
         padding: 10px;
         display: flex;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 20px !important;
         gap: 52px;
         flex-wrap: wrap;
@@ -478,4 +485,46 @@
             color: white;
         }
     }
+}
+
+@media screen and (width<768px) {
+
+    .create-resource-form-details {
+        .inputs {
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
+    .view-resources {
+        padding: 1rem 0.5rem;
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        table {
+
+            th,
+            td {
+                padding: 0.1rem;
+                font-size: 0.3rem;
+            }
+        }
+    }
+
+    .update-resource-form-details {
+        .fetch-resource-by-id {
+            flex-direction: column;
+            gap: 0px !important;
+        }
+        .inputs2{
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
+    .way-to-disaster-form-details{
+        .inputs{
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
 }

@@ -1,6 +1,4 @@
 .create-report {
-
-
     h2 {
         display: inline-block;
         text-align: center;
@@ -127,8 +125,6 @@
     }
 }
 
-
-
 .reports {
 
     // border: 2px solid red;
@@ -148,6 +144,8 @@
         .card {
             // border: 2px solid red;
             display: flex;
+            flex-wrap: wrap;
+            overflow: hidden;
             flex-direction: column;
             gap: 10px;
             background-color: rgb(233, 233, 233);
@@ -156,7 +154,8 @@
                 // border: 2px solid red;
                 display: flex;
                 gap: 10px;
-
+                flex-wrap: wrap;
+                overflow: hidden;
                 .top-left {
                     // border: 2px solid red;
                     padding: 10px;
@@ -188,6 +187,8 @@
                 flex: 1;
                 border: 2px solid rgb(221, 221, 221);
                 display: flex;
+                flex-wrap: wrap;
+                overflow: hidden;
                 flex-direction: column;
                 align-items: flex-start;
                 padding: 10px;
@@ -202,10 +203,14 @@
                     margin: 0px;
                     color: rgba(0, 0, 0, 0.541);
                     font-size: 10px;
+                    word-break: break-word;
+                    white-space: normal;
                 }
 
                 small {
                     margin-top: 10px;
+                    word-break: break-word;
+                    white-space: normal;
                 }
 
                 button {
@@ -218,4 +223,24 @@
             }
         }
     }
+}
+
+@media screen and (width<768px) {
+
+    .create-report-form-details{
+        .inputs, .upload-grid{
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
+    .reports{
+        .cards{
+            grid-template-columns: repeat(1, 1fr) !important;
+
+            .top-right{
+                justify-content: flex-start !important;
+            }
+        }
+    }
+    
 }

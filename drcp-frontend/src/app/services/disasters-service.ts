@@ -1,13 +1,15 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DisastersService {
   
-  API_URL:string="https://drcp-backend-d40a.onrender.com/disasters";
+  // API_URL:string="https://drcp-backend-d40a.onrender.com/disasters";
+  API_URL=environment.API_URL+"/disasters";
 
   constructor(private http : HttpClient){
 

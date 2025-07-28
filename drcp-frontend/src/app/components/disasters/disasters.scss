@@ -14,32 +14,16 @@
         }
     }
 
-    .top {
-        display: flex;
-        flex-direction: column;
-        overflow: hidden;
-        flex-wrap: wrap;
-        padding: 20px;
-
-        img {
-            object-fit: contain;
-            width: 100%;
-        }
-
-        p {
-            display: flex;
-            flex-wrap: wrap;
-            overflow: hidden;
-            white-space: normal;
-            word-break: break-word;
-            line-height: 20px;
-        }
+    p {
+        text-align: center;
+        padding: 15px;
     }
-
 
     .operations {
         padding: 10px;
         display: flex;
+        align-items: center;
+        justify-content: center;
         margin-bottom: 20px !important;
         gap: 52px;
         flex-wrap: wrap;
@@ -128,7 +112,7 @@
 
 .view-disasters,
 .view-resources {
-    padding: 4rem;
+    padding: 1rem;
     color: #ffffff;
     overflow-x: auto;
 
@@ -149,7 +133,7 @@
             padding: 1rem;
             text-align: left;
             border-bottom: 1px solid #2c2c2c;
-            font-size: 0.95rem;
+            font-size: 0.5rem;
         }
 
         th {
@@ -175,23 +159,6 @@
         }
     }
 
-    @media screen and (max-width: 768px) {
-        padding: 1rem 0.5rem;
-
-        h1 {
-            font-size: 1.2rem;
-            margin-bottom: 1rem;
-        }
-
-        table {
-
-            th,
-            td {
-                padding: 0.5rem;
-                font-size: 0.55rem;
-            }
-        }
-    }
 }
 
 .update-disaster-form {
@@ -542,4 +509,47 @@
             color: white;
         }
     }
+}
+
+@media screen and (width<768px) {
+
+    .create-disaster-form-details {
+        .inputs {
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
+    .view-disasters,
+    .view-resources {
+        padding: 1rem 0.5rem;
+        h1 {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+        table {
+
+            th,
+            td {
+                padding: 0.1rem;
+                font-size: 0.3rem;
+            }
+        }
+    }
+
+    .update-disaster-form-details {
+        .fetch-disaster-by-id {
+            flex-direction: column;
+            gap: 0px !important;
+        }
+        .inputs2{
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
+    .way-to-resource-form-details{
+        .inputs{
+            grid-template-columns: repeat(1, 1fr) !important;
+        }
+    }
+
 }

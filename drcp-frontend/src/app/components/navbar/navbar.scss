@@ -1,24 +1,26 @@
-.navbar{
+.navbar {
     background-color: rgb(223, 223, 223);
-    padding: 10px;
+    padding: 5px;
     position: sticky;
-    top:0px;
+    top: 0px;
     z-index: 1000;
-    ul{
+    ul {
         display: flex;
         align-items: center;
         justify-content: space-around;
+        flex-wrap: wrap;
+        overflow: hidden;
 
-        li{
+        li {
             list-style: none;
-            padding: 10px;
+            padding: 5px;
             cursor: pointer;
-
-            a{
+            
+            a {
                 text-decoration: none;
                 color: black;
-
-                &:hover{
+                
+                &:hover {
                     color: rgb(255, 125, 78);
                 }
             }
@@ -26,23 +28,35 @@
     }
 }
 
-.active{
+.active {
     font-weight: bold;
 }
 
-.auth-link{
+.auth-link {
+    
     background-color: black;
     color: white !important;
-    padding: 10px 30px;
+    padding: 10px;
     border: none;
     cursor: pointer;
-    &:hover{
+
+    &:hover {
         background-color: orangered;
     }
 }
 
-mat-icon{
-    &:hover{
+mat-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    &:hover {
         color: orangered;
+    }
+}
+
+@media screen and (width<768px) {
+    // mobile
+    li, .mat-icon, .auth-link{
+        font-size: 8px;
     }
 }

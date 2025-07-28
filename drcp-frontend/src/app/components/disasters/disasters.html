@@ -1,10 +1,5 @@
 <div class="disasters">
   <h1>Manage <span>Disasters</span></h1>
-  <!-- <div class="top">
-    <img [src]="bgImg" alt="disaster" />
-    <p>
-    </p>
-  </div> -->
 
   @if(roleLoaded){ @if(hasAdminOrVolunteerRole){
   <p style="color: red">
@@ -488,9 +483,9 @@
       <button>Lat: {{ startingPointCoordinates[0] }}</button>
       <button>Long: {{ startingPointCoordinates[1] }}</button>
     </div>
-    <div style="color: orangered">
+    <!-- <div style="color: orangered">
       <span style="color: blue">----------------------------</span><mat-icon>location_on</mat-icon><span style="color: orangered">----------------------------</span>
-    </div>
+    </div> -->
     <div class="right">
       <span >Destination (Resource)</span>
       <button>Lat: {{ destinationPointCoordinates[0] }}</button>

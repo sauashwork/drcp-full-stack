@@ -90,3 +90,21 @@
         }
     }
 }
+
+@media screen and (width<768px) {
+    // mobile
+    .form-details{
+        // padding: 20px;
+        .inputs{
+            div{
+                input{
+                    padding: 10px;
+                }
+            }
+        }
+
+        button{
+            margin-top: 10px;
+        }
+    }
+}

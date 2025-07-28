@@ -11,6 +11,7 @@
     justify-content: center;
     padding: 70px;
     border: 2px solid orangered;
+
     .close-icon {
         border: 1px solid red;
         position: absolute;
@@ -32,7 +33,6 @@
         gap: 30px;
         overflow: hidden;
         flex-wrap: wrap;
-
         div {
             display: flex;
             flex-direction: column;
@@ -79,6 +79,20 @@
         &:hover {
             color: rgba(255, 68, 0, 0.678);
             cursor: pointer;
+        }
+    }
+}
+
+@media screen and (width<768px) {
+    // mobile
+    .form-details{
+        // padding: 20px;
+        .inputs{
+            div{
+                input{
+                    padding: 10px;
+                }
+            }
         }
     }
 }

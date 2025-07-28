@@ -67,8 +67,18 @@
 
         p {
           font-size: 12px;
+          word-break: break-word;
+          white-space: normal;
         }
       }
     }
+  }
+}
+
+
+@media screen and (width<768px) {
+  // mobile
+  .cards {
+    grid-template-columns: repeat(1, 1fr) !important;
   }
 }

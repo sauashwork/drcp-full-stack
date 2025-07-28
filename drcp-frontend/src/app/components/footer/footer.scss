@@ -3,13 +3,12 @@
     align-items: center;
     justify-content: space-around;
     background-color: rgb(233, 233, 233);
-    // position: sticky;
-    // bottom: 0px;
-    // z-index: 1000;
     ul {
         display: flex;
         justify-content: center;
         align-items: center;
+        flex-wrap: wrap;
+        overflow: hidden;
         gap: 20px;
         padding: 10px;
         li {
@@ -30,4 +29,11 @@
 
 .active{
     font-weight: bold;
+}
+
+@media screen and (width<768px) {
+    // mobile
+    li{
+        font-size: 8px;
+    }
 }
